@@ -3,26 +3,33 @@ import pandas as pd
 #X = np.random.random_sample((10,1))
 #print(np.shape(X))
 #X = np.transpose(X)
-X = np.zeros((21,21))
-for x in range(21):
-    X[:,x]=x   
-ones_x = np.ones((21*21,1))
+X = np.zeros((26*23,3))
+wea = pd.read_csv('/home/madhumitha/Desktop/Fall2018/IOT_TA/weather.csv')
+wea=np.array(wea)
+print (wea.shape)
+wea=wea[1:27,1:4]
+wea = np.asfarray(wea, float)
+print (wea.shape)
+for x in range(23):
+    X[26*x:26*(x+1),:]=wea   
+ones_x = np.ones((26*23,1))
 #print (ones_x.shape)
-X_ = np.reshape(X,(21*21,1))
+#X_ = np.reshape(X,(21*21,1))
 #print (X_.shape)
-X_ = np.concatenate((ones_x,X_),axis=1)
+X_ = np.concatenate((ones_x,X),axis=1)
 #print (X_)
 #print (X_.shape)
 steps = pd.read_csv('/home/madhumitha/Desktop/Fall2018/IOT_TA/steps_count.csv')
 steps=np.array(steps)
-y=steps[1:22,1:22]
-y=np.reshape(y,(21*21,1))
+print (steps.shape)
+y=steps[2:28,2:25]
+y=np.reshape(y,(26*23,1))
 y = np.asfarray(y, float)
 #print (y.shape)
 #y = np.random.random_sample((10,1))
 alpha = 0.0001
 iters = 1000
-theta = np.array([[1.0,1.0]])
+theta = np.array([[1.0,1.0,1.0,1.0]])
 
 def computecost(X,y,theta):
     inner = np.power((np.matmul(X,theta.T)-y),2)
