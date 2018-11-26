@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
-#X = np.random.random_sample((10,1))
-#print(np.shape(X))
-#X = np.transpose(X)
+#define X size 
 X = np.zeros((26*23,3))
 wea = pd.read_csv('/home/madhumitha/Desktop/Fall2018/IOT_TA/weather.csv')
 wea=np.array(wea)
