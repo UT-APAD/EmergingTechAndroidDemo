@@ -1,14 +1,15 @@
 import numpy as np
 import pandas as pd
 #define X size 
-X = np.zeros((26*23,3))
+X = np.zeros((26*23,3))  #26 days data, 23 unique user id steps
 wea = pd.read_csv('/home/madhumitha/Desktop/Fall2018/IOT_TA/weather.csv')
 wea=np.array(wea)
 print (wea.shape)
 #Accumulate only the weather data from the array
-wea=wea[1:27,1:4]
+wea=wea[1:27,1:4]   #26 days data, column: high temp, low temp, precipitation
 wea = np.asfarray(wea, float)
 print (wea.shape)
+#replicate weather for all the steps data
 for x in range(23):
     X[26*x:26*(x+1),:]=wea   
 ones_x = np.ones((26*23,1))
@@ -22,7 +23,7 @@ steps=np.array(steps)
 print (steps.shape)
 #create a matrix of just steps data, removing the IDs
 y=steps[2:28,2:25]
-y=np.reshape(y,(26*23,1))
+y=np.reshape(y,(y.shape[0]*y.shape[1],1))
 y = np.asfarray(y, float)
 #define learning rate
 alpha = 0.0001
