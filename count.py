@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 #define X size 
 X = np.zeros((26*23,3))  #26 days data, 23 unique user id steps
-wea = pd.read_csv('/home/madhumitha/Desktop/Fall2018/IOT_TA/weather.csv')
+wea = pd.read_csv('../weather.csv')
 wea=np.array(wea)
 print (wea.shape)
 #Accumulate only the weather data from the array
@@ -18,7 +18,7 @@ ones_x = np.ones((26*23,1))
 X_ = np.concatenate((ones_x,X),axis=1)
 
 #load the steps data
-steps = pd.read_csv('/home/madhumitha/Desktop/Fall2018/IOT_TA/steps_count.csv')
+steps = pd.read_csv('../steps_count.csv')
 steps=np.array(steps)
 print (steps.shape)
 #create a matrix of just steps data, removing the IDs
