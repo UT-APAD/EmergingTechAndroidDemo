@@ -6,7 +6,7 @@ wea = pd.read_csv('../weather.csv')
 wea=np.array(wea)
 print (wea.shape)
 #Accumulate only the weather data from the array
-wea=wea[1:27,1:4]   #26 days data, column: high temp, low temp, precipitation
+wea=wea[1:27,1:4]   #26 days data, column: high temp, low temp, humidity
 wea = np.asfarray(wea, float)
 print (wea.shape)
 #replicate weather for all the steps data
